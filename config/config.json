@@ -1,11 +1,17 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "photoGallery",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
+    "username": "default",
+    "password": "fWcmq48CyxvI",
+    "database": "verceldb",
+    "host": "ep-fancy-credit-a4poevab-pooler.us-east-1.aws.neon.tech",
+    "dialect": "postgres",
+    "dialectOptions": {
+          "ssl": {
+            "require": true,
+            "rejectUnauthorized": false
+          }
+        }
+    },
   "test": {
     "username": "root",
     "password": null,
