@@ -1,29 +1,35 @@
-// import dependencies
+// index.js
+
 const express = require("express");
 const cors = require("cors");
 const PhotosRoutes = require("./modules/photos/photos.routes");
+const { swaggerUi, swaggerSpec } = require('./swagger');
+const bodyParser = require('body-parser');
 
-// initialise Express
+// Initialise Express
 const app = express();
-const bodyParser  = require('body-parser')
 
-var whitelist = ['http://localhost:5000', 'http://localhost:6000']
-const corsOptions =  { 
+var whitelist = ['http://localhost:5000', 'http://localhost:6000'];
+const corsOptions = { 
   origin: whitelist,
   optionsSuccessStatus: 200,
 };
- 
-//middlewares
+
+// Middlewares
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use(bodyParser.text({type:"/"}))
-app.use("/files",express.static("files"));
+app.use(bodyParser.text({ type: "/" }));
+app.use("/files", express.static("files"));
 app.use("/photos", PhotosRoutes);
 
-// start server
+// Serve Swagger docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// Start server
 app.listen(50, () => {
   try {
     console.log("server is running on port 50");
+    console.log("API docs available at http://localhost:50/api-docs");
   } catch (error) {
     console.log(error);
   }
