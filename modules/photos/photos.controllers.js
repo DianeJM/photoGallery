@@ -40,7 +40,7 @@ const deletePhoto = async (req,res)=>{
         const photo  = await Photo.findOne({
             where:{uuid}
         })
-        const response  = await photo.destory();
+        const response  = await photo.destroy();
         successResponse(res,response)
     } catch (error) {
         errorResponse(res,error)
