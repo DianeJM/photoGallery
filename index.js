@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 // Initialise Express
 const app = express();
 
-var whitelist = ['http://localhost:5000', 'http://localhost:6000'];
+var whitelist = ['http://localhost:5000', 'http://localhost:6000','https://photogallery-1mof.onrender.com/'];
 const corsOptions = { 
   origin: whitelist,
   optionsSuccessStatus: 200,

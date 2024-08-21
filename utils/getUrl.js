@@ -1,3 +1,3 @@
 module.exports.getUrl = (req) => {
-    return "http://localhost:50/" + req.file.path;
+    return "https://photogallery-1mof.onrender.com/" + req.file.path;
   };
