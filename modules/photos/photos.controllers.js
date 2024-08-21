@@ -34,6 +34,18 @@ const getPhoto = async (req, res) => {
     errorResponse(res, error);
   }
 };
+const deletePhoto = async (req,res)=>{
+    try {
+        const {uuid} = req.params;
+        const photo  = await Photo.findOne({
+            where:{uuid}
+        })
+        const response  = await photo.destory();
+        successResponse(res,response)
+    } catch (error) {
+        errorResponse(res,error)
+    }
+}
 
 //get all photos
 const getPhotos = async (req, res) => {
@@ -45,4 +57,4 @@ const getPhotos = async (req, res) => {
   }
 };
 
-module.exports = { addPhoto, getPhoto, getPhotos};
+module.exports = { addPhoto, getPhoto, getPhotos,deletePhoto };
