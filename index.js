@@ -9,14 +9,14 @@ const bodyParser = require('body-parser');
 // Initialise Express
 const app = express();
 
-var whitelist = ['http://localhost:5000', 'http://localhost:6000','https://photogallery-1mof.onrender.com/'];
+var whitelist = ['http://localhost:5000','http://localhost:3000', 'http://localhost:6000','https://photogallery-1mof.onrender.com/'];
 const corsOptions = { 
   origin: whitelist,
   optionsSuccessStatus: 200,
 };
 
 // Middlewares
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.text({ type: "/" }));
 app.use("/files", express.static("files"));
