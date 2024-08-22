@@ -65,4 +65,18 @@ const getPhotos = async (req, res) => {
   }
 };
 
-module.exports = { addPhoto, getPhoto, getPhotos, deletePhoto };
+//get photos by category
+const getPhotosByCategory = async (req, res) => {
+  try {
+    const { category } = req.params;
+    const response = await Photo.findAll({
+      where: {
+        category:category,
+      }
+    });
+    successResponse(res, response);
+  } catch (error) {
+    errorResponse(res, error);
+  }
+};
+module.exports = { addPhoto, getPhoto, getPhotos, deletePhoto, getPhotosByCategory };
