@@ -8,9 +8,10 @@ const fs = require('fs');
 const addPhoto = async (req, res) => {
   try {
     const file = req.file;
+    console.log(file);
     const storageRef = ref(storage, `/images/${file.originalname}`);
-    const fileBuffer = fs.readFileSync(file.path);
-    const snapshot = await uploadBytes(storageRef, fileBuffer)
+    // const fileBuffer = fs.readFileSync(file.path);
+    const snapshot = await uploadBytes(storageRef, file.buffer)
     const imageUrl = await getDownloadURL(storageRef)    
     const { relatedTo, category } = req.body;
 
