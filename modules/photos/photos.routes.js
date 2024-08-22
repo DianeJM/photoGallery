@@ -8,8 +8,8 @@ const router = Router();
 
 
 router.post("/", upload.single('imageUrl'), addPhoto);
+router.get("/category/:category", getPhotosByCategory);
 router.get("/:relatedTo", getPhoto);
-router.get("/:category", getPhotosByCategory);
 router.get("/", getPhotos);
 router.delete("/:uuid", deletePhoto);
 
